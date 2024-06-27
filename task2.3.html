@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>4.3</title>
+</head>
+<body>
+    <form>
+        1st Number: <input type="text" id="first"><br><br>
+        2nd Number: <input type="text" id="second"><br><br>
+        <input type="button" id="button" value="Multiply"
+       onclick=mul()>
+       <input type="button" id="button" value="Divide"
+       onclick=div()><br><br>
+        <p id="parah"></p>
+        </form>
+        <script>
+        function mul()
+        {
+        var x= parseInt(document.getElementById("first").value);
+        var y= parseInt(document.getElementById("second").value);
+        var res= x*y;
+        document.getElementById("parah").innerHTML= "The result is <br> "+res;
+        }
+        function div()
+        {
+        var x= parseInt(document.getElementById("first").value);
+        var y= parseInt(document.getElementById("second").value);
+        var res= x/y;
+        document.getElementById("parah").innerHTML= "The result is: <br> "+res;
+        }
+        </script>
+</body>
+</html>

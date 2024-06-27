@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>4.4</title>
+</head>
+<body>
+    <input type="button" id="button" value="show Time"
+       onclick=time()>
+       <p id="demo"></p>
+    <input type="button" id="button" value="show date"
+       onclick=date()>
+    <p id="demol"></p>
+    <script>
+        function time(){
+            const d = new Date();
+            document.getElementById("demo").innerHTML = d
+        }
+
+        function date(){
+            const d = new Date();
+            const month = ["January","February","March","April","May","June","July","August","September","October","November","December"];
+
+            y=d.getFullYear();
+            m=month[d.getMonth()];
+            da=d.getDate();
+            document.getElementById("demol").innerHTML = da+"/"+m+"/"+y;
+        }
+    </script>
+</body>
+</html>

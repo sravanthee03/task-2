@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>task 5</title>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    </head>
+    <style>
+        .container{
+            display:flex;
+            justify-items: center;
+        } 
+       
+        .input-control input:focus,
+        .input-control textarea:focus{
+            outline: 0;
+        }
+        .input-control.error input,
+        .input-control.error textarea {
+            border: 4px solid #ff3860;
+            
+        }
+
+       
+
+        .input-control.error .error {
+           
+            font-family: 'Times New Roman', Times, serif;
+            padding-left: 10px;
+            color: #ff3860;
+            font-size: 15px;
+            height: 13px; 
+        }   
+
+       
+    </style>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const form = document.getElementById("form");
+            const name = document.getElementById("name");
+            const email= document.getElementById("email");
+            const url  = document.getElementById("website");
+            const mess = document.getElementById("message");
+
+        form.addEventListener('submit',e => {
+            e.preventDefault();
+            validateInputs();
+        });
+    
+    const setError = (element,message) => {
+        const inputControl = element.parentElement;
+        const errorDisplay = inputControl.querySelector('.error');
+
+        errorDisplay.innerText = message;
+        inputControl.classList.add('error');
+        inputControl.classList.remove('success');
+    }
+
+    const setSuccess = element => {
+        const inputControl = element.parentElement;
+        const errorDisplay = inputControl.querySelector('.error');
+
+        errorDisplay.innerText ='';
+        inputControl.classList.add('success');
+        inputControl.classList.remove('error');
+    }
+
+        const isValidEmail = email => {
+        const re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+        return re.test(String(email).toLowerCase());
+    }
+
+    const validateInputs = () =>{
+        const namevalue = name.value.trim();
+        const mailvalue = email.value.trim();
+        const urlvalue  = url.value.trim();
+        const messvalue = mess.value.trim();
+    
+
+        if(namevalue==='')
+        {
+            setError(name,'This field is required');
+        }
+        else
+        {
+            setSuccess(name);
+        }
+
+        if(mailvalue==='')
+        {
+            setError(email,'A valid email address is required');
+        }
+        else if(!isValidEmail(mailvalue))
+        {
+            setError(email,'Provide a valid email address');    
+        }
+        else
+        {
+            setSuccess(email);
+        }
+    
+
+        if(urlvalue==='')
+        {
+            setError(url,'A valid url is required');
+        }
+        else
+        {
+            setSuccess(url);
+        }
+        
+        if (messvalue==='')
+        {
+            setError(mess,'This field is required')
+        }
+        else{
+        setSuccess(mess);
+        }
+    }
+    });
+    </script>
+    <body>
+    <div class="container ">
+        <form class="form justify-content-center" id="form" >
+            <div class="input-control d-flex flex-row" >
+                
+                <label>Name:</label>
+                <input type="text" id="name">
+                <div class="error"></div>
+               
+            </div><br>
+
+            <div class="input-control d-flex flex-row" >
+                <label>Email:</label>
+                <input type="text" id="email" >
+                <div class="error"></div>
+            </div><br>
+
+            <div class="input-control d-flex flex-row" >
+                <label>Website:</label>
+                <input type="text" id="website" >
+                <div class="error"></div>
+            </div><br>
+            
+            <div class="input-control d-flex flex-row" >
+                <label>Message:</label>
+                <textarea type="text" id="message" ></textarea>
+                <div class="error"></div>
+            </div><br>
+           
+            <button  type="submit">Submit</button>
+        </form>
+    </div>
+        
+    </body>
+</html>
